@@ -1,0 +1,43 @@
+// 1
+fun createClient(s: Consumer<ClientBuilder>): Client {
+    val builder = ClientBuilder()
+
+    s.accept(builder)
+
+    return builder.build()
+}
+
+// 2
+val client = createClient(object: Consumer<ClientBuilder> {
+   override fun accept(builder: ClientBuilder){
+       // move the statements here
+   }
+}
+
+// 3
+fun createClient(s: (ClientBuilder) -> Unit): Client {
+    val builder = ClientBuilder()
+
+    s(builder)
+
+    return builder.build()
+}
+
+
+// 4
+fun createClient(s: ().ClientBuilder -> Unit): Client {
+    val builder = ClientBuilder()
+
+    s(builder)
+
+    return builder.build()
+}
+
+//5
+fun ClientBuilder.company(init: CompanyBuilder.() -> Unit) {
+    company = CompanyBuilder().apply(init).build()
+}
+
+fun ClientBuilder.twitter(init: TwitterBuilder.() -> Unit) {
+    twitter = TwitterBuilder().apply(init).build()
+}
