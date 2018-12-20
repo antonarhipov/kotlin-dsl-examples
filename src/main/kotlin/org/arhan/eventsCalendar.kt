@@ -17,7 +17,6 @@ fun main(args: Array<String>) {
             dateTime = LocalDateTime.of(2018, Month.DECEMBER, 11, 0, 0)
             //endregion
             dateTime = 11 January 2018 at (14 hh 0.min)
-
         }
     }
 

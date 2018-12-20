@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.Coroutines
 
 plugins {
     java
-    kotlin("jvm") version "1.3.0-rc-80"
+    kotlin("jvm") version "1.3.10"
 }
 
 group = "org.arhan"
@@ -16,9 +16,10 @@ repositories {
 
 dependencies {
 
-    compile(kotlin("stdlib-jdk8"))
-    compile("org.jetbrains.kotlinx:kotlinx-html-jvm:0.6.11")
-    compile("org.jetbrains.exposed:exposed:0.10.5")
+    implementation(kotlin("stdlib-jdk8"))
+    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.6.11")
+    implementation("org.jetbrains.exposed:exposed:0.10.5")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1")
 
     testCompile("junit", "junit", "4.12")
 }
@@ -28,8 +29,4 @@ configure<JavaPluginConvention> {
 }
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
-}
-
-kotlin {
-//    experimental.coroutines = Coroutines.ENABLE
 }

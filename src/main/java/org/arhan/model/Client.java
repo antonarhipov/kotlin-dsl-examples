@@ -1,12 +1,14 @@
 package org.arhan.model;
 
-import org.jetbrains.annotations.NotNull;
+import java.time.LocalDate;
 
 public class Client {
   private final String myFirstName;
   private final String myLastName;
   private final Company myCompany;
   private final Twitter myTwitter;
+
+  private LocalDate dob;
 
   public Client(String firstName, String lastName, Company company, Twitter twitter) {
     myFirstName = firstName;
@@ -35,4 +37,11 @@ public class Client {
     return "Foo";
   }
 
+  public LocalDate getDob() {
+    return dob;
+  }
+
+  public void setDob(LocalDate dob) {
+    this.dob = dob;
+  }
 }

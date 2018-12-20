@@ -2,11 +2,14 @@ package org.arhan.model;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.time.LocalDate;
+
 public class ClientBuilder {
   private String myFirstName;
   private String myLastName;
   private Company myCompany;
   private Twitter myTwitter;
+  private LocalDate dob;
 
   public String getFirstName() {
     return myFirstName;
@@ -40,9 +43,20 @@ public class ClientBuilder {
     myTwitter = twitter;
   }
 
+  public LocalDate getDob() {
+    return dob;
+  }
+
+  public void setDob(LocalDate dob) {
+    this.dob = dob;
+  }
 
   @NotNull
   public Client build() {
-    return new Client(myFirstName, myLastName, myCompany, myTwitter);
+    Client client = new Client(myFirstName, myLastName, myCompany, myTwitter);
+    if (dob != null) {
+      client.setDob(dob);
+    }
+    return client;
   }
 }
