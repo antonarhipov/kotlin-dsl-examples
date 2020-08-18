@@ -2,9 +2,9 @@ package org.arhan
 
 import org.arhan.events.Calendar
 import org.arhan.events.Event
-import org.joda.time.Hours
-import org.joda.time.Minutes
-import org.joda.time.Seconds
+//import org.joda.time.Hours
+//import org.joda.time.Minutes
+//import org.joda.time.Seconds
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
             //region dateTime
             dateTime = LocalDateTime.of(2018, Month.DECEMBER, 11, 0, 0)
             //endregion
-            dateTime = 11 January 2018 at (14 hh 0.min)
+//            dateTime = 11 January 2018 at (14 hh 0.min)
         }
     }
 
@@ -27,19 +27,19 @@ fun main(args: Array<String>) {
 //region time
 infix fun Int.hh(minutes: Int): Pair<Int, Int> = Pair(this, minutes)
 
-infix fun Int.hh(minutes: Minutes): LocalTime = LocalTime.of(this, 0).withMinute(minutes.minutes)
+//infix fun Int.hh(minutes: Minutes): LocalTime = LocalTime.of(this, 0).withMinute(minutes.minutes)
 
 
 //endregion
-
-val Int.h: Hours
-    get() = Hours.hours(this)
-
-val Int.min: Minutes
-    get() = Minutes.minutes(this)
-
-val Int.sec: Seconds
-    get() = Seconds.seconds(this)
+//
+//val Int.h: Hours
+//    get() = Hours.hours(this)
+//
+//val Int.min: Minutes
+//    get() = Minutes.minutes(this)
+//
+//val Int.sec: Seconds
+//    get() = Seconds.seconds(this)
 
 
 //region months
@@ -47,7 +47,7 @@ val Int.sec: Seconds
 typealias LD = LocalDate
 
 @DateDsl
-infix fun Int.January(n: Int): LD  = LD.of(n, Month.JANUARY, this)
+infix fun Int.January(n: Int): LD = LD.of(n, Month.JANUARY, this)
 
 @DateDsl
 infix fun Int.February(n: Int): LD = LD.of(n, Month.FEBRUARY, this)
@@ -97,7 +97,6 @@ infix fun LocalDateTime.min(seconds: Int): LocalDateTime = withSecond(seconds)
 @DateDsl
 infix fun LocalDateTime.sec(a: Int): LocalDateTime = this
 //endregion
-
 
 
 //region event

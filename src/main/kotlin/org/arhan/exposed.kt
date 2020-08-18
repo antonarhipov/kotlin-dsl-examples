@@ -1,9 +1,9 @@
 package org.arhan
 
 import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.SchemaUtils.create
 import org.jetbrains.exposed.sql.SchemaUtils.drop
+import org.jetbrains.exposed.sql.transactions.transaction
 
 object Users : Table() {
     val id = varchar("id", 10).primaryKey() // Column<String>
@@ -20,7 +20,7 @@ fun main(args: Array<String>) {
     Database.connect("jdbc:h2:mem:test", driver = "org.h2.Driver")
 
     transaction {
-        create (Cities, Users)
+        create(Cities, Users)
 
         val saintPetersburgId = Cities.insert {
             it[name] = "St. Petersburg"
@@ -64,11 +64,11 @@ fun main(args: Array<String>) {
             it[cityId] = null
         }
 
-        Users.update({Users.id eq "alex"}) {
+        Users.update({ Users.id eq "alex" }) {
             it[name] = "Alexey"
         }
 
-        Users.deleteWhere{Users.name like "%thing"}
+        Users.deleteWhere { Users.name like "%thing" }
 
         println("All cities:")
 
@@ -77,21 +77,20 @@ fun main(args: Array<String>) {
         }
 
         println("Manual join:")
-        (Users innerJoin Cities).slice(Users.name, Cities.name).
-                select {(Users.id.eq("andrey") or Users.name.eq("Sergey")) and
-                        Users.id.eq("sergey") and Users.cityId.eq(Cities.id)}.forEach {
+        (Users innerJoin Cities).slice(Users.name, Cities.name).select {
+            (Users.id.eq("andrey") or Users.name.eq("Sergey")) and
+                    Users.id.eq("sergey") and Users.cityId.eq(Cities.id)
+        }.forEach {
             println("${it[Users.name]} lives in ${it[Cities.name]}")
         }
 
         println("Join with foreign key:")
 
 
-        (Users innerJoin Cities).slice(Users.name, Users.cityId, Cities.name).
-                select {Cities.name.eq("St. Petersburg") or Users.cityId.isNull()}.forEach {
+        (Users innerJoin Cities).slice(Users.name, Users.cityId, Cities.name).select { Cities.name.eq("St. Petersburg") or Users.cityId.isNull() }.forEach {
             if (it[Users.cityId] != null) {
                 println("${it[Users.name]} lives in ${it[Cities.name]}")
-            }
-            else {
+            } else {
                 println("${it[Users.name]} lives nowhere")
             }
         }
@@ -109,7 +108,7 @@ fun main(args: Array<String>) {
             }
         }
 
-        drop (Users, Cities)
+        drop(Users, Cities)
 
     }
 }

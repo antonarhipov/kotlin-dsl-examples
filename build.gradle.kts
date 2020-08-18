@@ -22,6 +22,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1")
 
     testCompile("junit", "junit", "4.12")
+    compile(kotlin("script-runtime"))
 }
 
 configure<JavaPluginConvention> {
