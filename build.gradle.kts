@@ -1,33 +1,28 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jetbrains.kotlin.gradle.dsl.Coroutines
 
 plugins {
-    java
-    kotlin("jvm") version "1.3.10"
+    kotlin("jvm") version "1.5.0"
 }
 
-group = "org.arhan"
+group = "me.anton"
 version = "1.0-SNAPSHOT"
 
 repositories {
-    maven { setUrl("http://dl.bintray.com/kotlin/kotlin-eap") }
-    jcenter()
+    mavenLocal()
+    mavenCentral()
 }
 
 dependencies {
-
-    implementation(kotlin("stdlib-jdk8"))
-    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.6.11")
-    implementation("org.jetbrains.exposed:exposed:0.10.5")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1")
-
-    testCompile("junit", "junit", "4.12")
-    compile(kotlin("script-runtime"))
+    testImplementation(kotlin("test-junit5"))
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.0-RC")
 }
 
-configure<JavaPluginConvention> {
-    sourceCompatibility = JavaVersion.VERSION_1_8
+tasks.test {
+    useJUnitPlatform()
 }
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+
+tasks.withType<KotlinCompile>() {
+    kotlinOptions.jvmTarget = "11"
 }
