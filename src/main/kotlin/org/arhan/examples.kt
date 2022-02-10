@@ -3,6 +3,8 @@ package org.arhan
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML
 
+import org.arhan.*
+
 //region The Master Plan
 // functions
 // functional types
