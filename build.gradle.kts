@@ -27,11 +27,11 @@ tasks.test {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf(
-            "-Xjsr305=strict",
+            "-opt-in=kotlin.RequiresOptIn",
+            "-Xcontext-receivers",
             "-opt-in=kotlin.contracts",
-            "-Xopt-in=kotlin.RequiresOptIn",
-            "-Xcontext-receivers"
         )
         jvmTarget = "11"
+        languageVersion = "1.7"
     }
 }
