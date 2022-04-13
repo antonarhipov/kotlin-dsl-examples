@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.6.10"
+    kotlin("jvm") version "1.6.20"
 }
 
 group = "me.anton"
@@ -24,6 +24,14 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "11"
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs = listOf(
+            "-Xjsr305=strict",
+            "-opt-in=kotlin.contracts",
+            "-Xopt-in=kotlin.RequiresOptIn",
+            "-Xcontext-receivers"
+        )
+        jvmTarget = "11"
+    }
 }
