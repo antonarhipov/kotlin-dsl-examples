@@ -7,6 +7,7 @@ import org.arhan.model.TwitterBuilder
 
 fun main() {
     val client = client {
+
         firstName = "Anton"
         lastName = "Arhipov"
 
@@ -19,7 +20,7 @@ fun main() {
             city = "Tallinn"
         }
 
-        dob = 24 March 2000
+        dob = 24 March 1981
 
     }
 
@@ -39,11 +40,12 @@ val Client.toS: String
 
 fun client(block: context(DateContext) ClientBuilder.() -> Unit): Client {
     val builder = ClientBuilder()
-    with(DateContext()) {
+    with(DateContext){
         block(builder)
     }
     return builder.build()
 }
+
 
 
 

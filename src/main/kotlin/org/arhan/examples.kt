@@ -28,11 +28,9 @@ class StatusResult(var statusCode: Int, var statusText: String)
 
 class RouteHandler(var request: Request, val response: Response)
 
-fun get(path: String, func: RouteHandler.() -> Unit) {
-}
+fun get(path: String, func: RouteHandler.() -> Unit) {}
 
-fun main(args: Array<String>) {
-
+fun main() {
     get("/") {
         if (request.contentType == "") {
             response {
@@ -41,9 +39,6 @@ fun main(args: Array<String>) {
             }
         }
     }
-
-    "f".run {}
-
 }
 
 
