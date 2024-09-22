@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "2.0.0-RC2"
+    kotlin("jvm") version "2.0.20"
 }
 
 group = "me.anton"
@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test-junit5"))
-    implementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
+    implementation("org.junit.jupiter:junit-jupiter-api:5.10.3")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.8.0")
 }
