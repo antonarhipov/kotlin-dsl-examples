@@ -20,11 +20,6 @@ public class CompanyBuilder {
     myCity = city;
   }
 
-
-  public void company(){
-
-  }
-
   public Company build() {
     return new Company(myName, myCity);
   }

@@ -16,7 +16,6 @@ public class Example {
     companyBuilder.setCity("Tallinn");
     builder.setCompany(companyBuilder.build());
 
-
     final Client client = builder.build();
     System.out.println("Created client is: " + client);
   }

@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.internal.config.LanguageFeature
 
 plugins {
-    kotlin("jvm") version "2.0.20"
+    kotlin("jvm") version "2.1.20"
 }
 
 group = "me.anton"
@@ -24,9 +24,32 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.withType<KotlinCompile> {
+kotlin {
+//    explicitApi()
+//    explicitApiWarning()
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+
     compilerOptions {
-        freeCompilerArgs.set(listOf("-Xcontext-receivers"))
         jvmTarget.set(JvmTarget.JVM_17)
     }
+
+    sourceSets.all {
+        languageSettings {
+            enableLanguageFeature(LanguageFeature.ContextReceivers.name)
+            enableLanguageFeature(LanguageFeature.WhenGuards.name)
+            version = 2.0
+        }
+    }
+
 }
+
+//
+//
+//tasks.withType<KotlinCompile> {
+//    compilerOptions {
+//        freeCompilerArgs.set(listOf("-Xcontext-receivers"))
+//        jvmTarget.set(JvmTarget.JVM_17)
+//    }
+//}
