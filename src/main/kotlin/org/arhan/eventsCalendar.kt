@@ -20,15 +20,12 @@ infix fun Int.January(n: Int): LD = LD.of(n, Month.JANUARY, this)
 @DateDsl
 infix fun Int.February(n: Int): LD = LD.of(n, Month.FEBRUARY, this)
 
-context(DateContext)
 @DateDsl
 infix fun Int.March(n: Int): LD = LD.of(n, Month.MARCH, this)
 
-context(DateContext)
 @DateDsl
 infix fun Int.April(n: Int): LD = LD.of(n, Month.APRIL, this)
 
-context(DateContext)
 @DateDsl
 infix fun Int.May(n: Int): LD = LD.of(n, Month.MAY, this)
 

@@ -37,8 +37,9 @@ kotlin {
 
     sourceSets.all {
         languageSettings {
-            enableLanguageFeature(LanguageFeature.ContextReceivers.name)
+            enableLanguageFeature(LanguageFeature.ContextParameters.name)
             enableLanguageFeature(LanguageFeature.WhenGuards.name)
+            enableLanguageFeature(LanguageFeature.ContractSyntaxV2.name)
             version = 2.0
         }
     }
